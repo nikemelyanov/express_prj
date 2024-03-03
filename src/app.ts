@@ -1,10 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
-import usersRouter from "./modules/users/usersRouter";
+import indexRouter from "./router";
 
 const app = express();
+
 app.use(bodyParser.json());
-app.use("/users", usersRouter);
+app.use("/api/v1/", indexRouter);
 
 async function start() {
     try {
