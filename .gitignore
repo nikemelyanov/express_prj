@@ -1,0 +1,7 @@
+node_modules/
+app/
+data/
+
+docker-compose.yaml
+.env
+
