@@ -5,6 +5,10 @@ import indexRouter from "./router";
 const app = express();
 
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+    console.log('IP адрес клиента:', req.ip);
+    next();
+  });
 app.use("/api/v1/", indexRouter);
 
 async function start() {
