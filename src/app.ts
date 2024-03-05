@@ -6,9 +6,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-    console.log('IP адрес клиента:', req.ip);
+    console.log("query params:", req.query);
     next();
-  });
+});
 app.use("/api/v1/", indexRouter);
 
 async function start() {
