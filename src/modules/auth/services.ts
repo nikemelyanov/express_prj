@@ -1,19 +1,25 @@
+import { APP_ERROR } from "../../common/errors";
 import { UsersService } from "../users/services";
 import { AuthLoginDto, AuthRegisterDto } from "./dto";
 import jwt from "jsonwebtoken";
 
 export class AuthService {
-    static async register(user: AuthRegisterDto) {
-        const userExists = await UsersService.getUserByEmail(user.email);
+    static async register(data: AuthRegisterDto) {
+        const userExists = await UsersService.getUserByEmail(data.email);
         if (userExists) {
-            throw new Error('User already exists');
+            return APP_ERROR.USER_EXISTS;
         }
-        const createdUser = await UsersService.createUser(user);
-        const token = jwt.sign({ id: createdUser.id }, 'secret', { expiresIn: '1h' });
-        return { user: createdUser, token };
+        const createdUser = await UsersService.createUser(data);
+        return { message: 'User created' };
     }
 
-    static async login(user: AuthLoginDto) {
-        return await UsersService.getUserByEmail(user.email);
+    static async login(data: AuthLoginDto) {
+        const user = await UsersService.getUserByEmail(data.email);
+        if (!user) {
+            return APP_ERROR.USER_NOT_EXISTS;
+        }
+        const { password, ...userWithoutPass } = user;
+        const token = jwt.sign({ id: user.id }, 'secret', { expiresIn: '1h' });
+        return { user: userWithoutPass, token };
     }
 }

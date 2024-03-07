@@ -18,6 +18,13 @@ export class AuthController {
             email: req.body.email,
             password: req.body.password,
         };
+        if (!data.email || !data.password) {
+            return res.status(400).json({ message: 'Email and password are required' });
+        }
+        if (typeof data.email !== 'string' || typeof data.password !== 'string') {
+            return res.status(400).json({ message: 'Email and password must be a string' });
+        }
+        
         const result = await AuthService.login(data);
         res.status(200).json(result);
     }

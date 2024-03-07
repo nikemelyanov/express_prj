@@ -3,9 +3,7 @@ import { CreateUserDto, UpdateUserDto } from "./dto";
 
 export class UsersService {
     static async createUser(user: CreateUserDto) {
-        const createdUser = await prisma.user.create({ data: user });
-        const { password, ...userWithoutPassword } = createdUser;
-        return userWithoutPassword;
+        return await prisma.user.create({ data: user });
     }
 
     static async getUsers() {

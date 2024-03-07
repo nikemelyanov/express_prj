@@ -8,11 +8,6 @@ export class UsersController {
         return newUser
     }
 
-    static async getUsers(req: Request, res: Response) {
-        const users = await UsersService.getUsers();
-        res.json(users);
-    }
-
     static async getUserById(req: Request, res: Response) {
         const userid = Number(req.params["userId"]);
         const user = await UsersService.getUserById(userid);
