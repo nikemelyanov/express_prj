@@ -5,14 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./app/app.js",
-    "start:dev": "tsc && nodemon ./app/app.js"
+    "start:dev": "tsc && nodemon ./app/app.js",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.6",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
     "nodemon": "^3.1.0",
+    "prettier": "3.2.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {

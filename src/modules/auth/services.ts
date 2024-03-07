@@ -1,7 +1,7 @@
-import { APP_ERROR } from "../../common/errors";
-import { UsersService } from "../users/services";
-import { AuthLoginDto, AuthRegisterDto } from "./dto";
-import jwt from "jsonwebtoken";
+import { APP_ERROR } from '../../common/errors';
+import { UsersService } from '../users/services';
+import { AuthLoginDto, AuthRegisterDto } from './dto';
+import jwt from 'jsonwebtoken';
 
 export class AuthService {
     static async register(data: AuthRegisterDto) {

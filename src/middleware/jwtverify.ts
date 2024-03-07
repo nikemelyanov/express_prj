@@ -2,10 +2,14 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
 interface CustomRequest extends Request {
-    user: any; 
+    user: any;
 }
 
-const authenticateJWT = (req: CustomRequest, res: Response, next: NextFunction) => {
+const authenticateJWT = (
+    req: CustomRequest,
+    res: Response,
+    next: NextFunction,
+) => {
     const token = req.headers.authorization?.split(' ')[1];
 
     if (token) {
