@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import { AuthService } from "./services";
-import { AuthLoginDto, AuthRegisterDto } from "./dto";
+import { Request, Response } from 'express';
+import { AuthService } from './services';
+import { AuthLoginDto, AuthRegisterDto } from './dto';
 
 export class AuthController {
     static async register(req: Request, res: Response) {
@@ -19,12 +19,19 @@ export class AuthController {
             password: req.body.password,
         };
         if (!data.email || !data.password) {
-            return res.status(400).json({ message: 'Email and password are required' });
+            return res
+                .status(400)
+                .json({ message: 'Email and password are required' });
         }
-        if (typeof data.email !== 'string' || typeof data.password !== 'string') {
-            return res.status(400).json({ message: 'Email and password must be a string' });
+        if (
+            typeof data.email !== 'string' ||
+            typeof data.password !== 'string'
+        ) {
+            return res
+                .status(400)
+                .json({ message: 'Email and password must be a string' });
         }
-        
+
         const result = await AuthService.login(data);
         res.status(200).json(result);
     }

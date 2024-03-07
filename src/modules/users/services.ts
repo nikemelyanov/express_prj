@@ -1,5 +1,5 @@
-import prisma from "../../prisma";
-import { CreateUserDto, UpdateUserDto } from "./dto";
+import prisma from '../../prisma';
+import { CreateUserDto, UpdateUserDto } from './dto';
 
 export class UsersService {
     static async createUser(user: CreateUserDto) {
