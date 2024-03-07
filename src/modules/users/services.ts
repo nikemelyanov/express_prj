@@ -10,8 +10,12 @@ export class UsersService {
         return await prisma.user.findMany();
     }
 
-    static async getUser(userId: number) {
-        return await prisma.user.findUnique({ where: { id: userId } });
+    static async getUserByEmail(email: string) {
+        return await prisma.user.findUnique({ where: { email: email } });
+    }
+
+    static async getUserById(id: number) {
+        return await prisma.user.findUnique({ where: { id: id } });
     }
 
     static async updateUser(userId: number, user: UpdateUserDto) {
