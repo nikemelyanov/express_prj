@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { APP_ERROR } from '../../common/errors';
 import { UsersService } from '../users/services';
 import { AuthLoginDto, AuthRegisterDto } from './dto';

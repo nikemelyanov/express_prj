@@ -3,6 +3,11 @@ import { UsersService } from './services';
 import { CreateUserDto, UpdateUserDto } from './dto';
 
 export class UsersController {
+    static async getUsers(req: Request, res: Response) {
+        const users = await UsersService.getUsers();
+        res.json(users);
+    }
+
     static async createUser(user: CreateUserDto) {
         const newUser = await UsersService.createUser(user);
         return newUser;
